@@ -17,18 +17,13 @@ namespace POO_Course.models
             {
                 if (!isAccount(number))
                     return null;
-                Account accountToReturn = new();
+                Account accountToReturn = null;
                 foreach(Account account in _accounts)
                 {
                     if (account.Number == number)
                         accountToReturn = account;
-                    
                 }
                 return accountToReturn;
-            }
-            set
-            {
-                _accounts.Add(value);
             }
         }
 
@@ -78,6 +73,29 @@ namespace POO_Course.models
         public int NumbersOfAccount()
         {
             return _accounts.Count;
+        }
+        public double HavingAccounts(Person person)
+        {
+            List<Account> accounts = new();
+            double sumBalance = 0d;
+
+            foreach (Account account in _accounts)
+            {
+                if(account.Holder == person)
+                {
+                    accounts.Add(account);
+                }
+            }
+
+            if (accounts.Count == 0)
+                return 0d;
+
+            foreach (Account account in accounts)
+            {
+                sumBalance += account.Balance;
+            }
+
+            return sumBalance;
         }
     }
 }

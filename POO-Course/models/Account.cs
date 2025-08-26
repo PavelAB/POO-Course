@@ -79,5 +79,18 @@ namespace POO_Course.models
 			Deposit(amountToWithdrawal);
         }
 
+		public static double operator +(Account left, Account right)
+		{
+			double leftPart = left.Balance;
+			double rightPart = right.Balance;
+			if (leftPart < 0)
+				leftPart = 0;
+			if (rightPart < 0)
+				rightPart = 0;
+
+
+			return leftPart + rightPart;
+		}
+
     }
 }

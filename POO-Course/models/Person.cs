@@ -28,7 +28,20 @@ namespace POO_Course.models
         {
             Console.WriteLine($"{FirstName} {LastName} {BirthDate.ToString("dd/MM/yyyy")}");
         }
-
+        public static bool operator ==(Person left, Person right)
+        {
+            if(left.FirstName == right.FirstName && left.LastName == right.LastName)
+                return true;
+            else 
+                return false;
+        }
+        public static bool operator !=(Person left, Person right)
+        {
+            if (left.FirstName == right.FirstName && left.LastName == right.LastName)
+                return false;
+            else
+                return true;
+        }
 
 
     }
