@@ -36,6 +36,25 @@ namespace POO_Course
             Console.WriteLine("---------------------");
             firstAccount.DisplayAccount();
             secondAccount.DisplayAccount();
-        }    
+
+
+
+            Console.Clear();
+            Console.WriteLine("Banque");
+
+            Bank bank = new Bank();
+            bank.Name = "Belfius";
+            Console.WriteLine($"Name: {bank.Name}");
+
+
+            bank.AddNewAccount(firstAccount);
+            Account test = bank["BE 789"];
+            Console.WriteLine($"Account: ");
+            test.DisplayAccount();
+            Console.WriteLine($"NumbersOfAccount: {bank.NumbersOfAccount()}");
+            bank.RemoveAccount("BE 789");
+            Console.WriteLine($"After - NumbersOfAccount: {bank.NumbersOfAccount()}");
+
+        }
     }
 }

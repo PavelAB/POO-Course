@@ -32,6 +32,11 @@ namespace POO_Course.models
 		}
 		public Person Holder {  get; set; }
 
+		public Account()
+		{
+
+		}
+
 		public Account(string number, double creditLine, Person holder)
 		{
 			Number = number;
