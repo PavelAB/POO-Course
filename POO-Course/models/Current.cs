@@ -9,7 +9,8 @@ namespace POO_Course.models
 {
     internal class Current: Account
     {
-
+        const double INTEREST_RATE = 0.03d;
+        const double INTEREST_NEGATIF_RATE = 0.0975d;
         private double _CreditLine;
 
 
@@ -47,6 +48,13 @@ namespace POO_Course.models
             {
                 Withdrawal(amountToWithdrawal);
             }
+        }
+        protected override double InterestCalculation()
+        {
+            if(base.Balance > 0)
+                return base.Balance * INTEREST_RATE;
+            else
+                return base.Balance * INTEREST_NEGATIF_RATE;
         }
         public override string ToString()
         {

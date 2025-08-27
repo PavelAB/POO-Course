@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace POO_Course.models
 {
+    
     internal class Savings : Account
     {
+        const double INTEREST_RATE = 0.045d;
         public DateTime? LastWithdrawal { get; set; }
         public DateTime? LastDeposit {  get; set; }
 
@@ -28,7 +30,11 @@ namespace POO_Course.models
             {
                 Withdrawal(amountToWithdrawal);
                 LastWithdrawal = DateTime.Now;
-            }
+            } 
+        }
+        protected override double InterestCalculation()
+        {
+            return base.Balance * INTEREST_RATE;
         }
         public override void NewDeposit(double amount)
         {

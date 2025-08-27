@@ -27,7 +27,7 @@ namespace POO_Course
                 "BE 777",
                 -900,
                 bestPerson);
-
+            
             bestPerson.DisplayPerson();
 
             Console.WriteLine(firstAccount.ToString());
@@ -100,6 +100,7 @@ namespace POO_Course
             #endregion
 
             Console.WriteLine("-------------------");
+            #region Exercise 4 
 
             Console.WriteLine($"NumbersOfAccount: {bank.NumbersOfAccount()}");
 
@@ -114,7 +115,16 @@ namespace POO_Course
             Console.WriteLine(fifthAccount.ToString());
 
             Console.WriteLine($"After = NumbersOfAccount: {bank.NumbersOfAccount()}");
+            #endregion
 
+
+            firstAccount.ApplyInterest();
+            secondAccount.ApplyInterest();
+            fifthAccount.ApplyInterest();
+
+            Console.WriteLine(firstAccount.ToString());
+            Console.WriteLine(secondAccount.ToString());
+            Console.WriteLine(fifthAccount.ToString());
 
         }
     }

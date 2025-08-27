@@ -15,7 +15,7 @@ namespace POO_Course.models
         {
             get
             {
-                if (!isAccount(number))
+                if (!IsAccount(number))
                     return null;
                 Account accountToReturn = null;
                 foreach(Account account in _accounts)
@@ -28,7 +28,7 @@ namespace POO_Course.models
         }
 
 
-        private bool isAccount(string accountNumber)
+        private bool IsAccount(string accountNumber)
         {
             foreach (Account account in _accounts)
             {
@@ -38,7 +38,7 @@ namespace POO_Course.models
             return false;
         }
 
-        private bool isAccount(Account newAccount)
+        private bool IsAccount(Account newAccount)
         { 
             foreach(Account account in _accounts)
             {
@@ -51,23 +51,26 @@ namespace POO_Course.models
 
         public void AddNewAccount(Account account)
         {
-            if (isAccount(account))
+            if (IsAccount(account))
                 return;
             
             _accounts.Add(account);
-        } 
+        }
         public void RemoveAccount(string number)
         {
-            if (!isAccount(number))
+            if (!IsAccount(number))
                 return;
 
-            Account accountToDelete = new();
+            Account? accountToDelete = null;
             foreach (Account account in _accounts)
             {
                 if (account.Number == number)
                     accountToDelete = account;
             }
-            _accounts.Remove(accountToDelete);
+
+            if(accountToDelete != null)
+                _accounts.Remove(accountToDelete);
+                
         }
 
         public int NumbersOfAccount()

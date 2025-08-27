@@ -7,7 +7,7 @@ using POO_Course.utils;
 
 namespace POO_Course.models
 {
-    internal class Account
+    internal abstract class Account
     {
 		private double _Balance = 0d;
 		
@@ -15,18 +15,8 @@ namespace POO_Course.models
 		public double Balance
 		{
 			get { return _Balance; }
-		}
-		
+		}		
 		public Person Holder {  get; set; }
-		public Account()
-		{
-
-		}
-		public Account(string number, Person holder)
-		{
-			Number = number;
-			Holder = holder;
-		}
 		protected void Withdrawal(double amount )
 		{
 			_Balance -= amount;
@@ -37,7 +27,7 @@ namespace POO_Course.models
 		}
         public override string ToString()
         {
-			return $"- {Number},\n- {Balance} $,\n- Holder : {Holder.FullPersonInformation()}\n"
+			return $"- {Number},\n- {Balance} $,\n- Holder : {Holder.FullPersonInformation()}\n";
         }
         protected virtual bool WithdrawalPossible(double amount)
         {
@@ -46,13 +36,17 @@ namespace POO_Course.models
             else
                 return false;
         }
-
         public virtual void NewDeposit(double amount)
         {
             double amountToWithdrawal = Utils.PositiveAmount(amount);
 
 			Deposit(amountToWithdrawal);
         }
+		protected abstract double InterestCalculation();
+		public void ApplyInterest()
+		{
+			_Balance += InterestCalculation();
+		}
 		public static double operator +(Account left, Account right)
 		{
 			double leftPart = left.Balance;
