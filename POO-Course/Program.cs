@@ -30,9 +30,9 @@ namespace POO_Course
 
             bestPerson.DisplayPerson();
 
-            firstAccount.DisplayAccount();
-            firstAccount.NewWithdrawal(-500);
-            secondAccount.DisplayAccount();
+            Console.WriteLine(firstAccount.ToString());
+            Console.WriteLine(secondAccount.ToString());
+            firstAccount.NewWithdrawal(-500);            
             secondAccount.NewDeposit(-1000); 
             #endregion
 
@@ -86,10 +86,11 @@ namespace POO_Course
             thirdAccount.NewDeposit(500);
             fourthAccount.NewDeposit(1800);
 
-            firstAccount.DisplayAccount();
-            secondAccount.DisplayAccount();
-            thirdAccount.DisplayAccount();
-            fourthAccount.DisplayAccount();
+            Console.WriteLine(firstAccount.ToString());
+            Console.WriteLine(secondAccount.ToString());
+            Console.WriteLine(thirdAccount.ToString());
+            Console.WriteLine(fourthAccount.ToString());
+            
 
             Console.WriteLine($"Summ 1 + 2: {firstAccount + secondAccount}");
             Console.WriteLine($"Summ 2 + 3: {secondAccount + thirdAccount}");
@@ -110,7 +111,7 @@ namespace POO_Course
             bank.AddNewAccount(fifthAccount);
             fifthAccount.NewDeposit(500);
             fifthAccount.NewWithdrawal(250);
-            fifthAccount.DisplayAccount();
+            Console.WriteLine(fifthAccount.ToString());
 
             Console.WriteLine($"After = NumbersOfAccount: {bank.NumbersOfAccount()}");
 

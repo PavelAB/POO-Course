@@ -9,13 +9,15 @@ namespace POO_Course.models
 {
     internal class Savings : Account
     {
-        public DateTime LastWithdrawal { get; set; }
-        public DateTime LastDeposit {  get; set; }
+        public DateTime? LastWithdrawal { get; set; }
+        public DateTime? LastDeposit {  get; set; }
 
         public Savings(string number, Person holder)
         {
             Number = number;
             Holder = holder;
+            LastWithdrawal = null;
+            LastDeposit = null;
         }
 
         public void NewWithdrawal(double amount)
@@ -35,10 +37,11 @@ namespace POO_Course.models
             Deposit(amountToWithdrawal);
             LastDeposit = DateTime.Now;
         }
-        public override void DisplayAccount()
+        public override string ToString()
         {
-            Console.WriteLine($"- {Number},\n- {Balance} $,\n- Last withdrawal date: {LastWithdrawal},\n- Last deposit date: {LastDeposit},\n- Holder : {Holder.FullPersonInformation()}\n");
+            return $"- {Number},\n- {Balance} $,\n- Last withdrawal date: {LastWithdrawal},\n- Last deposit date: {LastDeposit},\n- Holder : {Holder.FullPersonInformation()}\n";
         }
+        
 
     }
 }

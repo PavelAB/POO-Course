@@ -35,9 +35,9 @@ namespace POO_Course.models
 		{
 			_Balance += amount;
 		}
-		public virtual void DisplayAccount()
-		{
-			Console.WriteLine($"- {Number},\n- {Balance} $,\n- Holder : {Holder.FullPersonInformation()}\n");
+        public override string ToString()
+        {
+			return $"- {Number},\n- {Balance} $,\n- Holder : {Holder.FullPersonInformation()}\n"
         }
         protected virtual bool WithdrawalPossible(double amount)
         {

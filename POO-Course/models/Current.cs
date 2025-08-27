@@ -48,10 +48,9 @@ namespace POO_Course.models
                 Withdrawal(amountToWithdrawal);
             }
         }
-
-        public override void DisplayAccount()
+        public override string ToString()
         {
-            Console.WriteLine($"- {Number},\n- {Balance} $,\n- CreditLine: {CreditLine},\n- Holder : {Holder.FullPersonInformation()}\n");
+            return $"- {Number},\n- {Balance} $,\n- CreditLine: {CreditLine},\n- Holder : {Holder.FullPersonInformation()}\n";
         }
     }
 }
