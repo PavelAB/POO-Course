@@ -92,7 +92,7 @@ namespace POO_Course.models
 
             foreach (Account account in accounts)
             {
-                sumBalance += account.Balance;
+                sumBalance = sumBalance + account;
             }
 
             return sumBalance;

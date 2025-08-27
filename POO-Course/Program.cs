@@ -15,7 +15,7 @@ namespace POO_Course
                     new DateOnly(2000, 6, 11)
                 );
 
-            Account firstAccount = new Account(
+            Current firstAccount = new(
                 "BE 789",
                 600,
                 new Person(
@@ -23,7 +23,7 @@ namespace POO_Course
                     "Doe",
                     new DateOnly(1991, 11, 11)
                 ));
-            Account secondAccount = new Account(
+            Current secondAccount = new(
                 "BE 777",
                 -900,
                 bestPerson);
@@ -63,12 +63,15 @@ namespace POO_Course
             //Console.WriteLine($"After - NumbersOfAccount: {bank.NumbersOfAccount()}");
             #endregion
 
-            Account thirdAccount = new Account(
-                "BE 890",
-                600,
-                bestPerson
-                );
-            Account fourthAccount = new Account(
+            Console.WriteLine("---------------------");
+
+            #region Exercise 3
+            Current thirdAccount = new(
+                    "BE 890",
+                    600,
+                    bestPerson
+                    );
+            Current fourthAccount = new(
                 "BE 891",
                 600,
                 bestPerson
@@ -78,7 +81,7 @@ namespace POO_Course
             bank.AddNewAccount(thirdAccount);
             bank.AddNewAccount(fourthAccount);
 
-            Console.WriteLine($"NumbersOfAccount: {bank.NumbersOfAccount()}");
+            
 
             thirdAccount.NewDeposit(500);
             fourthAccount.NewDeposit(1800);
@@ -90,10 +93,26 @@ namespace POO_Course
 
             Console.WriteLine($"Summ 1 + 2: {firstAccount + secondAccount}");
             Console.WriteLine($"Summ 2 + 3: {secondAccount + thirdAccount}");
+            Console.WriteLine($"Summ 1 + 2 + 3: {firstAccount + secondAccount + thirdAccount}");
 
             Console.WriteLine($"BestPerson Balance: {bank.HavingAccounts(bestPerson)}");
+            #endregion
 
+            Console.WriteLine("-------------------");
 
+            Console.WriteLine($"NumbersOfAccount: {bank.NumbersOfAccount()}");
+
+            Savings fifthAccount = new Savings(
+                "BE 999",
+                bestPerson
+                );
+
+            bank.AddNewAccount(fifthAccount);
+            fifthAccount.NewDeposit(500);
+            fifthAccount.NewWithdrawal(250);
+            fifthAccount.DisplayAccount();
+
+            Console.WriteLine($"After = NumbersOfAccount: {bank.NumbersOfAccount()}");
 
 
         }

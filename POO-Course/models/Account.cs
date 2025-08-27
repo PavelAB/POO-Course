@@ -9,76 +9,50 @@ namespace POO_Course.models
 {
     internal class Account
     {
-        public string Number { get; set; }
-
 		private double _Balance = 0d;
-
+		
+        public string Number { get; set; }
 		public double Balance
 		{
 			get { return _Balance; }
 		}
-
-		private double _CreditLine;
-
-		public double CreditLine
-		{
-			get { return _CreditLine; }
-			set {
-				if (value < 0)
-					_CreditLine = 0d;
-				else
-					_CreditLine = value; 
-			}
-		}
+		
 		public Person Holder {  get; set; }
-
 		public Account()
 		{
 
 		}
-
-		public Account(string number, double creditLine, Person holder)
+		public Account(string number, Person holder)
 		{
 			Number = number;
-			CreditLine = creditLine;
 			Holder = holder;
 		}
-
-		private void Withdrawal(double amount )
+		protected void Withdrawal(double amount )
 		{
 			_Balance -= amount;
 		}
-		private void Deposit(double amount)
+        protected void Deposit(double amount)
 		{
 			_Balance += amount;
 		}
-		public void DisplayAccount()
+		public virtual void DisplayAccount()
 		{
-			Console.WriteLine($"- {Number},\n- {Balance} $,\n- CreditLine: {CreditLine},\n- Holder : {Holder.FullPersonInformation()}\n");
+			Console.WriteLine($"- {Number},\n- {Balance} $,\n- Holder : {Holder.FullPersonInformation()}\n");
         }
-		private bool WithdrawalPossible(double amount) 
-		{
-			if (Balance - amount >= -CreditLine)
-				return true;
-			else
-				return false;
-		}
-		public void NewWithdrawal(double amount)
-		{
-            double amountToWithdrawal = Utils.PositiveAmount(amount);
+        protected virtual bool WithdrawalPossible(double amount)
+        {
+            if (Balance - amount >= 0)
+                return true;
+            else
+                return false;
+        }
 
-			if (WithdrawalPossible(amountToWithdrawal))
-			{
-                Withdrawal(amountToWithdrawal);
-			}
-		}
-        public void NewDeposit(double amount)
+        public virtual void NewDeposit(double amount)
         {
             double amountToWithdrawal = Utils.PositiveAmount(amount);
 
 			Deposit(amountToWithdrawal);
         }
-
 		public static double operator +(Account left, Account right)
 		{
 			double leftPart = left.Balance;
@@ -91,6 +65,16 @@ namespace POO_Course.models
 
 			return leftPart + rightPart;
 		}
+        public static double operator +(double left, Account right)
+        {
+            double rightPart = right.Balance;
+
+            if (rightPart < 0)
+                rightPart = 0;
+
+
+            return left + rightPart;
+        }
 
     }
 }
