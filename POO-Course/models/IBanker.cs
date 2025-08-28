@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace POO_Course.models
 {
-    internal interface IBanker
+    internal interface IBanker: ICustomer
     {
-        public string Number { get; }
-        public Person Holder { get; }
+        string Number { get; }
+        Person Holder { get; }
 
-        public void ApplyInterest(); 
+        void ApplyInterest(); 
     }
 }

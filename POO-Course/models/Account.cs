@@ -7,7 +7,7 @@ using POO_Course.utils;
 
 namespace POO_Course.models
 {
-    internal abstract class Account : ICustomer, IBanker
+    internal abstract class Account : IBanker
     {
 		private double _Balance = 0d;
 		

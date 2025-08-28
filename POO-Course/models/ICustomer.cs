@@ -8,11 +8,11 @@ namespace POO_Course.models
 {
     internal interface ICustomer
     {
-        public double Balance { get; }
+        double Balance { get; }
 
-        public void NewDeposit(double amount);
+        void NewDeposit(double amount);
 
-        public void NewWithdrawal(double amount);
+        void NewWithdrawal(double amount);
 
     }
 }
