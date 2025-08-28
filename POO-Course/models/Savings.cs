@@ -34,7 +34,7 @@ namespace POO_Course.models
         }
         protected override double InterestCalculation()
         {
-            return base.Balance * INTEREST_RATE;
+            return Balance * INTEREST_RATE;
         }
         public override void NewDeposit(double amount)
         {

@@ -1,4 +1,5 @@
 ﻿using POO_Course.models;
+using POO_Course.utils;
 using System.Security.Cryptography.X509Certificates;
 
 namespace POO_Course
@@ -27,13 +28,13 @@ namespace POO_Course
                 "BE 777",
                 -900,
                 bestPerson);
-            
+
             bestPerson.DisplayPerson();
 
             Console.WriteLine(firstAccount.ToString());
             Console.WriteLine(secondAccount.ToString());
-            firstAccount.NewWithdrawal(-500);            
-            secondAccount.NewDeposit(-1000); 
+            firstAccount.NewWithdrawal(-500);
+            secondAccount.NewDeposit(-1000);
             #endregion
 
 
@@ -81,7 +82,7 @@ namespace POO_Course
             bank.AddNewAccount(thirdAccount);
             bank.AddNewAccount(fourthAccount);
 
-            
+
 
             thirdAccount.NewDeposit(500);
             fourthAccount.NewDeposit(1800);
@@ -90,7 +91,7 @@ namespace POO_Course
             Console.WriteLine(secondAccount.ToString());
             Console.WriteLine(thirdAccount.ToString());
             Console.WriteLine(fourthAccount.ToString());
-            
+
 
             Console.WriteLine($"Summ 1 + 2: {firstAccount + secondAccount}");
             Console.WriteLine($"Summ 2 + 3: {secondAccount + thirdAccount}");
@@ -125,6 +126,14 @@ namespace POO_Course
             Console.WriteLine(firstAccount.ToString());
             Console.WriteLine(secondAccount.ToString());
             Console.WriteLine(fifthAccount.ToString());
+
+
+            Dice.Minimum = 5;
+            Dice.Maximum = 15;
+
+            Console.WriteLine($"Roll: {Dice.Roll()}");
+            Console.WriteLine($"Roll: {Dice.ToString(8)}");
+
 
         }
     }

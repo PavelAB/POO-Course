@@ -51,10 +51,10 @@ namespace POO_Course.models
         }
         protected override double InterestCalculation()
         {
-            if(base.Balance > 0)
-                return base.Balance * INTEREST_RATE;
+            if(Balance > 0)
+                return Balance * INTEREST_RATE;
             else
-                return base.Balance * INTEREST_NEGATIF_RATE;
+                return Balance * INTEREST_NEGATIF_RATE;
         }
         public override string ToString()
         {

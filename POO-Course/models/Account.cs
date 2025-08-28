@@ -15,8 +15,8 @@ namespace POO_Course.models
 		public double Balance
 		{
 			get { return _Balance; }
-		}		
-		public Person Holder {  get; set; }
+		}
+		public Person Holder { get; set; }
 		protected void Withdrawal(double amount )
 		{
 			_Balance -= amount;
