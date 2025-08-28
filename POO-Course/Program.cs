@@ -117,22 +117,29 @@ namespace POO_Course
 
             Console.WriteLine($"After = NumbersOfAccount: {bank.NumbersOfAccount()}");
             #endregion
+            Console.WriteLine("-------------------");
 
-
+            #region Exercise 5
             firstAccount.ApplyInterest();
             secondAccount.ApplyInterest();
             fifthAccount.ApplyInterest();
 
             Console.WriteLine(firstAccount.ToString());
             Console.WriteLine(secondAccount.ToString());
-            Console.WriteLine(fifthAccount.ToString());
+            Console.WriteLine(fifthAccount.ToString()); 
+            #endregion
 
+            Console.WriteLine("-------------------");
+            //Dice.Minimum = 5;
+            //Dice.Maximum = 15;
 
-            Dice.Minimum = 5;
-            Dice.Maximum = 15;
+            //Console.WriteLine($"Roll: {Dice.Roll()}");
+            //Console.WriteLine($"Roll: {Dice.ToString(8)}");
 
-            Console.WriteLine($"Roll: {Dice.Roll()}");
-            Console.WriteLine($"Roll: {Dice.ToString(8)}");
+            Console.WriteLine(firstAccount.ToString());
+            firstAccount.NewWithdrawal(100);
+            Console.WriteLine(firstAccount.ToString());
+
 
 
         }

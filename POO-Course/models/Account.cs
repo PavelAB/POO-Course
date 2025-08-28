@@ -7,7 +7,7 @@ using POO_Course.utils;
 
 namespace POO_Course.models
 {
-    internal abstract class Account
+    internal abstract class Account : ICustomer, IBanker
     {
 		private double _Balance = 0d;
 		
@@ -42,7 +42,16 @@ namespace POO_Course.models
 
 			Deposit(amountToWithdrawal);
         }
-		protected abstract double InterestCalculation();
+        public virtual void NewWithdrawal(double amount)
+        {
+            double amountToWithdrawal = Utils.PositiveAmount(amount);
+
+            if (WithdrawalPossible(amountToWithdrawal))
+            {
+                Withdrawal(amountToWithdrawal);
+            }
+        }
+        protected abstract double InterestCalculation();
 		public void ApplyInterest()
 		{
 			_Balance += InterestCalculation();

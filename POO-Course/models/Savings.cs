@@ -22,7 +22,7 @@ namespace POO_Course.models
             LastDeposit = null;
         }
 
-        public void NewWithdrawal(double amount)
+        public override void NewWithdrawal(double amount)
         {
             double amountToWithdrawal = Utils.PositiveAmount(amount);
 

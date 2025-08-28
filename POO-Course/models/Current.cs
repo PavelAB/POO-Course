@@ -38,17 +38,7 @@ namespace POO_Course.models
                 return true;
             else
                 return false;
-        }
-
-        public void NewWithdrawal(double amount)
-        {
-            double amountToWithdrawal = Utils.PositiveAmount(amount);
-
-            if (WithdrawalPossible(amountToWithdrawal))
-            {
-                Withdrawal(amountToWithdrawal);
-            }
-        }
+        }        
         protected override double InterestCalculation()
         {
             if(Balance > 0)
