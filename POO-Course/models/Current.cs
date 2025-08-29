@@ -30,6 +30,10 @@ namespace POO_Course.models
         {
             CreditLine = creditLine;
         }
+        public Current(string number, double creditLine, Person holder, double amount) : this(number, creditLine, holder)
+        {
+            NewDeposit(amount);
+        }
         protected override bool WithdrawalPossible(double amount)
         {
             if (Balance - amount >= -CreditLine)

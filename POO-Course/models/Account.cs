@@ -23,10 +23,8 @@ namespace POO_Course.models
             Number = number;
             Holder = holder;
         }
-        public Account(string number, Person holder, double balance)
+        public Account(string number, Person holder, double balance): this(number, holder)
         {
-            Number = number;
-            Holder = holder;
             NewDeposit(balance);
         }
 		protected void Withdrawal(double amount )

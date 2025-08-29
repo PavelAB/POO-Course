@@ -19,6 +19,10 @@ namespace POO_Course.models
             LastWithdrawal = null;
             LastDeposit = null;
         }
+        public Savings(string number, Person holder, double amount) : this(number, holder)
+        {
+            NewDeposit(amount);
+        }
 
         public override void NewWithdrawal(double amount)
         {

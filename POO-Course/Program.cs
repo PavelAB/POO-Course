@@ -156,7 +156,7 @@ namespace POO_Course
                         new DateOnly(2000, 6, 11)
                     );
 
-            Savings account1 = new Savings("BE 111", bestPerson);
+            Savings account1 = new Savings("BE 111", bestPerson, 10_000);
             Current account2 = new Current("BE 111", 1000, bestPerson);
 
             Console.WriteLine($"Acconut 1: {account1}");
