@@ -179,6 +179,8 @@ namespace POO_Course
             #endregion
 
 
+            Console.WriteLine("Test Push");
+
         }
     }
 }
