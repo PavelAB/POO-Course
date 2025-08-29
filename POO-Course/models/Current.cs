@@ -1,4 +1,5 @@
-﻿using POO_Course.utils;
+﻿using POO_Course.models.Exeptions;
+using POO_Course.utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,12 +35,10 @@ namespace POO_Course.models
         {
             NewDeposit(amount);
         }
-        protected override bool WithdrawalPossible(double amount)
-        {
-            if (Balance - amount >= -CreditLine)
-                return true;
-            else
-                return false;
+        protected override void EnsureWithdrawalPossible(double amount)
+        {            
+            if (Balance - amount < - CreditLine)
+                throw new WithdrawalException("Le retrait ne doit pas dépasser le solde du compte.");
         }        
         protected override double InterestCalculation()
         {
@@ -50,7 +49,7 @@ namespace POO_Course.models
         }
         public override string ToString()
         {
-            return $"- {Number},\n- {Balance} $,\n- CreditLine: {CreditLine},\n- Holder : {Holder.FullPersonInformation()}\n";
+            return $"- {Number},\n- {Balance} $,\n- CreditLine: {CreditLine},\n- Holder : {Holder.ToString()}\n";
         }
     }
 }

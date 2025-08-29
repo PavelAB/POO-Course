@@ -1,4 +1,5 @@
 ﻿using POO_Course.models;
+using POO_Course.models.Exeptions;
 using POO_Course.utils;
 using System.Security.Cryptography.X509Certificates;
 
@@ -149,21 +150,32 @@ namespace POO_Course
             Console.WriteLine("-------------------");
 
             #region Exercise 7: Constructors
+            try
+            {
+                Person bestPerson = new Person(
+                            "BestPerson",
+                            "Smith",
+                            new DateOnly(2000, 6, 11)
+                        );
 
-            Person bestPerson = new Person(
-                        "BestPerson",
-                        "Smith",
-                        new DateOnly(2000, 6, 11)
-                    );
+                Savings account1 = new Savings("BE 111", bestPerson, 10_000);
+                Current account2 = new Current("BE 111", 1_000, bestPerson);
 
-            Savings account1 = new Savings("BE 111", bestPerson, 10_000);
-            Current account2 = new Current("BE 111", 1000, bestPerson);
+                //Console.WriteLine($"Acconut 1: {account1}");
+                //Console.WriteLine($"Acconut 2: {account2}");
+                account2.NewWithdrawal(10_000);
+                Console.WriteLine($"Acconut 2: {account2}");
 
-            Console.WriteLine($"Acconut 1: {account1}");
-            Console.WriteLine($"Acconut 2: {account2}");
-
-
-
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine($"{e.Message}");
+                
+            }
+            catch (WithdrawalException e)
+            {
+                Console.WriteLine($"{e.Message}");
+            }
             #endregion
 
 

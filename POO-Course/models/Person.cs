@@ -19,14 +19,9 @@ namespace POO_Course.models
             BirthDate = birthDate;
         }
 
-        public string FullPersonInformation()
+        public override string ToString()
         {
             return $"{FirstName} {LastName} : {BirthDate}";
-        }
-
-        public void DisplayPerson()
-        {
-            Console.WriteLine($"{FirstName} {LastName} {BirthDate.ToString("dd/MM/yyyy")}");
         }
         public static bool operator ==(Person left, Person right)
         {

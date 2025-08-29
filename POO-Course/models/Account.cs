@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using POO_Course.models.Exeptions;
 using POO_Course.utils;
 
 namespace POO_Course.models
@@ -18,12 +19,12 @@ namespace POO_Course.models
 			get { return _Balance; }
 		}
 		public Person Holder { get; private set; }
-        public Account(string number, Person holder)
+        protected Account(string number, Person holder)
         {
             Number = number;
             Holder = holder;
         }
-        public Account(string number, Person holder, double balance): this(number, holder)
+        protected Account(string number, Person holder, double balance): this(number, holder)
         {
             NewDeposit(balance);
         }
@@ -37,29 +38,30 @@ namespace POO_Course.models
 		}
         public override string ToString()
         {
-			return $"- {Number},\n- {Balance} $,\n- Holder : {Holder.FullPersonInformation()}\n";
+			return $"- {Number},\n- {Balance} $,\n- Holder : {Holder.ToString()}\n";
         }
-        protected virtual bool WithdrawalPossible(double amount)
+        protected virtual void EnsureWithdrawalPossible(double amount)
         {
-            if (Balance - amount >= 0)
-                return true;
-            else
-                return false;
+            if (Balance < amount)
+                throw new WithdrawalException("Le retrait ne doit pas dépasser le solde du compte.");
         }
         public virtual void NewDeposit(double amount)
         {
-            double amountToWithdrawal = Utils.PositiveAmount(amount);
+            EnsurePositiveAmount(amount);
 
-			Deposit(amountToWithdrawal);
+            Deposit(amount);
         }
         public virtual void NewWithdrawal(double amount)
         {
-            double amountToWithdrawal = Utils.PositiveAmount(amount);
+            EnsurePositiveAmount(amount);
 
-            if (WithdrawalPossible(amountToWithdrawal))
-            {
-                Withdrawal(amountToWithdrawal);
-            }
+            EnsureWithdrawalPossible(amount);
+
+            Withdrawal(amount);
+        }
+        protected void EnsurePositiveAmount(double amount)
+        {
+            Guard.NegativeNumberException(amount, nameof(amount));          
         }
         protected abstract double InterestCalculation();
 		public void ApplyInterest()

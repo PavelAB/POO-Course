@@ -15,7 +15,7 @@ namespace POO_Course.models
         {
             get
             {
-                if (!IsAccount(number))
+                if (!AccountExists(number))
                     return null;
                 Account accountToReturn = null;
                 foreach(Account account in _accounts)
@@ -28,7 +28,7 @@ namespace POO_Course.models
         }
 
 
-        private bool IsAccount(string accountNumber)
+        private bool AccountExists(string accountNumber)
         {
             foreach (Account account in _accounts)
             {
@@ -38,7 +38,7 @@ namespace POO_Course.models
             return false;
         }
 
-        private bool IsAccount(Account newAccount)
+        private bool AccountExists(Account newAccount)
         { 
             foreach(Account account in _accounts)
             {
@@ -51,14 +51,14 @@ namespace POO_Course.models
 
         public void AddNewAccount(Account account)
         {
-            if (IsAccount(account))
+            if (AccountExists(account))
                 return;
             
             _accounts.Add(account);
         }
         public void RemoveAccount(string number)
         {
-            if (!IsAccount(number))
+            if (!AccountExists(number))
                 return;
 
             Account? accountToDelete = null;
@@ -73,14 +73,13 @@ namespace POO_Course.models
                 
         }
 
-        public int NumbersOfAccount()
+        public int NumberOfAccounts()
         {
             return _accounts.Count;
         }
-        public double HavingAccounts(Person person)
+        public double GetTotalBalance(Person person)
         {
-            List<Account> accounts = new();
-            double sumBalance = 0d;
+            List<Account> accounts = new();            
 
             foreach (Account account in _accounts)
             {
@@ -89,6 +88,13 @@ namespace POO_Course.models
                     accounts.Add(account);
                 }
             }
+
+            return SumOfBalance(accounts);
+            
+        }
+        private double SumOfBalance(List<Account> accounts)
+        {
+            double sumBalance = 0d;
 
             if (accounts.Count == 0)
                 return 0d;

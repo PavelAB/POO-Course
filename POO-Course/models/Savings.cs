@@ -1,4 +1,5 @@
-﻿using POO_Course.utils;
+﻿using POO_Course.models.Exeptions;
+using POO_Course.utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,6 @@ namespace POO_Course.models
         const double INTEREST_RATE = 0.045d;
         public DateTime? LastWithdrawal { get; private set; }
         public DateTime? LastDeposit {  get; private set; }
-
         public Savings(string number, Person holder): base(number, holder)
         {
             LastWithdrawal = null;
@@ -23,16 +23,15 @@ namespace POO_Course.models
         {
             NewDeposit(amount);
         }
-
         public override void NewWithdrawal(double amount)
         {
-            double amountToWithdrawal = Utils.PositiveAmount(amount);
+            EnsurePositiveAmount(amount);
 
-            if (WithdrawalPossible(amountToWithdrawal))
-            {
-                Withdrawal(amountToWithdrawal);
-                LastWithdrawal = DateTime.Now;
-            } 
+            EnsureWithdrawalPossible(amount);
+
+            Withdrawal(amount);
+
+            LastWithdrawal = DateTime.Now;
         }
         protected override double InterestCalculation()
         {
@@ -40,14 +39,15 @@ namespace POO_Course.models
         }
         public override void NewDeposit(double amount)
         {
-            double amountToWithdrawal = Utils.PositiveAmount(amount);
+            EnsurePositiveAmount(amount);
 
-            Deposit(amountToWithdrawal);
+            Deposit(amount);
+
             LastDeposit = DateTime.Now;
         }
         public override string ToString()
         {
-            return $"- {Number},\n- {Balance} $,\n- Last withdrawal date: {LastWithdrawal},\n- Last deposit date: {LastDeposit},\n- Holder : {Holder.FullPersonInformation()}\n";
+            return $"- {Number},\n- {Balance} $,\n- Last withdrawal date: {LastWithdrawal},\n- Last deposit date: {LastDeposit},\n- Holder : {Holder.ToString()}\n";
         }
         
 
