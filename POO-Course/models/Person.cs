@@ -9,9 +9,9 @@ namespace POO_Course.models
 {
     internal class Person
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateOnly BirthDate { get; set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public DateOnly BirthDate { get; private set; }
 
         public Person(string firstName, string lastName, DateOnly birthDate) {
             FirstName = firstName;

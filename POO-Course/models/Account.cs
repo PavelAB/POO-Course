@@ -10,13 +10,25 @@ namespace POO_Course.models
     internal abstract class Account : IBanker
     {
 		private double _Balance = 0d;
+
 		
-        public string Number { get; set; }
+        public string Number { get; private set; }
 		public double Balance
 		{
 			get { return _Balance; }
 		}
-		public Person Holder { get; set; }
+		public Person Holder { get; private set; }
+        public Account(string number, Person holder)
+        {
+            Number = number;
+            Holder = holder;
+        }
+        public Account(string number, Person holder, double balance)
+        {
+            Number = number;
+            Holder = holder;
+            NewDeposit(balance);
+        }
 		protected void Withdrawal(double amount )
 		{
 			_Balance -= amount;

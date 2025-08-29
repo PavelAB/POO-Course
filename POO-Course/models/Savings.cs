@@ -11,13 +11,11 @@ namespace POO_Course.models
     internal class Savings : Account
     {
         const double INTEREST_RATE = 0.045d;
-        public DateTime? LastWithdrawal { get; set; }
-        public DateTime? LastDeposit {  get; set; }
+        public DateTime? LastWithdrawal { get; private set; }
+        public DateTime? LastDeposit {  get; private set; }
 
-        public Savings(string number, Person holder)
+        public Savings(string number, Person holder): base(number, holder)
         {
-            Number = number;
-            Holder = holder;
             LastWithdrawal = null;
             LastDeposit = null;
         }

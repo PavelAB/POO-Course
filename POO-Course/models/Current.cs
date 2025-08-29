@@ -26,11 +26,9 @@ namespace POO_Course.models
             }
         }
 
-        public Current(string number, double creditLine, Person holder)
+        public Current(string number, double creditLine, Person holder) : base(number, holder)
         {
-            Number = number;
             CreditLine = creditLine;
-            Holder = holder;
         }
         protected override bool WithdrawalPossible(double amount)
         {

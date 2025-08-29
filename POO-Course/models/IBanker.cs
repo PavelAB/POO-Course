@@ -10,7 +10,6 @@ namespace POO_Course.models
     {
         string Number { get; }
         Person Holder { get; }
-
         void ApplyInterest(); 
     }
 }
