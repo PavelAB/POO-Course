@@ -157,14 +157,27 @@ namespace POO_Course
                             "Smith",
                             new DateOnly(2000, 6, 11)
                         );
+                Person worsePerson = new Person(
+                            "WorstPerson",
+                            "Evil",
+                            new DateOnly(1990, 6, 6)
+                        );
+
+                Bank bank = new Bank();
+                bank.Name = "Belfius";
+                Console.WriteLine($"Name: {bank.Name}");
 
                 Savings account1 = new Savings("BE 111", bestPerson, 10_000);
                 Current account2 = new Current("BE 111", 1_000, bestPerson);
+                Current account3 = new Current("BE 111", 10_000, worsePerson);
+
+                account3.NegativeLimitPassed += bank.PassedToNegativeAction;
 
                 Console.WriteLine($"Acconut 1: {account1}");
                 Console.WriteLine($"Acconut 2: {account2}");
                 //account2.NewWithdrawal(10_000);
-                Console.WriteLine($"Acconut 2: {account2}");
+                account3.NewWithdrawal(3_000);
+                Console.WriteLine($"Acconut 3: {account3}");
 
             }
             catch (ArgumentOutOfRangeException e)
@@ -179,7 +192,6 @@ namespace POO_Course
             #endregion
 
 
-            Console.WriteLine("Test Push");
 
         }
     }

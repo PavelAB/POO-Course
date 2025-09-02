@@ -73,6 +73,11 @@ namespace POO_Course.models
                 
         }
 
+        public void PassedToNegativeAction(Account account)
+        {
+            Console.WriteLine($"Le compte {account.Number} vient de passer en negatif");
+        }
+
         public int NumberOfAccounts()
         {
             return _accounts.Count;

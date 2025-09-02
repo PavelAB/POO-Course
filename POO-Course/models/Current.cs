@@ -47,6 +47,21 @@ namespace POO_Course.models
             else
                 return Balance * INTEREST_NEGATIF_RATE;
         }
+
+        public override void NewWithdrawal(double amount)
+        {
+            EnsurePositiveAmount(amount);
+
+            EnsureWithdrawalPossible(amount);
+
+            Withdrawal(amount);
+
+            EventTest();
+        }
+        public void EventTest()
+        {
+            base.PassedToNegative(this);
+        }
         public override string ToString()
         {
             return $"- {Number},\n- {Balance} $,\n- CreditLine: {CreditLine},\n- Holder : {Holder.ToString()}\n";
