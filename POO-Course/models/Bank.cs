@@ -55,6 +55,7 @@ namespace POO_Course.models
                 return;
             
             _accounts.Add(account);
+            account.NegativeLimitPassed += PassedToNegativeAction;
         }
         public void RemoveAccount(string number)
         {

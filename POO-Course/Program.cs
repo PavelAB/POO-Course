@@ -168,10 +168,13 @@ namespace POO_Course
                 Console.WriteLine($"Name: {bank.Name}");
 
                 Savings account1 = new Savings("BE 111", bestPerson, 10_000);
-                Current account2 = new Current("BE 111", 1_000, bestPerson);
-                Current account3 = new Current("BE 111", 10_000, worsePerson);
+                Current account2 = new Current("BE 112", 1_000, bestPerson);
+                Current account3 = new Current("BE 113", 10_000, worsePerson);
 
-                account3.NegativeLimitPassed += bank.PassedToNegativeAction;
+                bank.AddNewAccount(account1);
+                bank.AddNewAccount(account2);
+                bank.AddNewAccount(account3);
+
 
                 Console.WriteLine($"Acconut 1: {account1}");
                 Console.WriteLine($"Acconut 2: {account2}");

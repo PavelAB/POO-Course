@@ -62,8 +62,6 @@ namespace POO_Course.models
             EnsureWithdrawalPossible(amount);
 
             Withdrawal(amount);
-
-
         }
         protected void EnsurePositiveAmount(double amount)
         {
@@ -74,7 +72,7 @@ namespace POO_Course.models
 		{
 			_Balance += InterestCalculation();
 		}
-        public void PassedToNegative(Account account)
+        protected void PassedToNegative(Account account)
         {
             NegativeLimitPassed?.Invoke(account);
         }

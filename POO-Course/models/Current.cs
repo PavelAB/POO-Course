@@ -56,11 +56,8 @@ namespace POO_Course.models
 
             Withdrawal(amount);
 
-            EventTest();
-        }
-        public void EventTest()
-        {
-            base.PassedToNegative(this);
+            if(Balance < 0)
+                base.PassedToNegative(this);
         }
         public override string ToString()
         {
