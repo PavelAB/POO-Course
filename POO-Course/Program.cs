@@ -161,9 +161,9 @@ namespace POO_Course
                 Savings account1 = new Savings("BE 111", bestPerson, 10_000);
                 Current account2 = new Current("BE 111", 1_000, bestPerson);
 
-                //Console.WriteLine($"Acconut 1: {account1}");
-                //Console.WriteLine($"Acconut 2: {account2}");
-                account2.NewWithdrawal(10_000);
+                Console.WriteLine($"Acconut 1: {account1}");
+                Console.WriteLine($"Acconut 2: {account2}");
+                //account2.NewWithdrawal(10_000);
                 Console.WriteLine($"Acconut 2: {account2}");
 
             }

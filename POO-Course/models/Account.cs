@@ -8,6 +8,9 @@ using POO_Course.utils;
 
 namespace POO_Course.models
 {
+
+    internal delegate void NegativeLimitPassedEvent(Account account); 
+
     internal abstract class Account : IBanker
     {
 		private double _Balance = 0d;
@@ -19,6 +22,7 @@ namespace POO_Course.models
 			get { return _Balance; }
 		}
 		public Person Holder { get; private set; }
+        public event NegativeLimitPassedEvent? NegativeLimitPassed = null;
         protected Account(string number, Person holder)
         {
             Number = number;
